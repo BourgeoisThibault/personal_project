@@ -1,9 +1,46 @@
 image: maven:3.3.9-jdk-8
 
+variables:
+  IP_REST: "10.10.1.5"
+
 stages:
   - compile
+  - test
+  - build
+  - deploy
 
 maven_compile:
   stage: compile
   script:
     - mvn compile
+
+maven_test:
+  stage: test
+  script:
+    - mvn test
+  when: on_success
+
+maven_install:
+  stage: build
+  script:
+    - mvn install -DskipTests
+  when: on_success
+  artifacts:
+      expire_in: 1 hrs
+      paths:
+      - restservice/target/restservice.jar
+  only:
+    refs:
+      - master
+
+deploy_rest:
+  stage: deploy
+  dependencies:
+    - maven_install
+  script:
+    - scp restservice/target/restservice.jar jobswitch@IP_REST:/home/jobswitch/restservice.jar
+    - ssh jobswitch@IP-REST "/home/jobswitch./restartRest.sh"
+  when: on_success
+  only:
+    refs:
+      - master
