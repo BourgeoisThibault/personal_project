@@ -3,6 +3,13 @@ image: maven:3.3.9-jdk-8
 variables:
   IP_REST: "10.10.1.5"
 
+before_script:
+  - mkdir ~/.ssh
+  - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+  - chmod 700 ~/.ssh/id_rsa
+  - ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
+  - echo "$SSH_HOST_KEYS" > ~/.ssh/known_hosts
+
 stages:
   - compile
   - test
@@ -38,8 +45,8 @@ deploy_rest:
   dependencies:
     - maven_install
   script:
-    - scp restservice/target/restservice.jar jobswitch@IP_REST:/home/jobswitch/restservice.jar
-    - ssh jobswitch@IP-REST "/home/jobswitch./restartRest.sh"
+    - cd restservice/
+    - mvn install -Ddocker.host=http://10.10.1.6:2376
   when: on_success
   only:
     refs:

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String homePage(){
-        return "<H1>JOBSWITCH REST HOMEPAGE</H1>";
+    public String homePage() throws UnknownHostException {
+        return "<H1>JOBSWITCH REST HOMEPAGE</H1></br>" + InetAddress.getLocalHost().getHostName();
     }
 }
