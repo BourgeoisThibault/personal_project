@@ -1,15 +1,5 @@
 image: maven:3.3.9-jdk-8
 
-variables:
-  IP_REST: "10.10.1.5"
-
-before_script:
-  - mkdir ~/.ssh
-  - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-  - chmod 700 ~/.ssh/id_rsa
-  - ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
-  - echo "$SSH_HOST_KEYS" > ~/.ssh/known_hosts
-
 stages:
   - compile
   - test
