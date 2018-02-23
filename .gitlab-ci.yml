@@ -20,7 +20,7 @@ maven_test:
 maven_install:
   stage: build
   script:
-    - mvn install -DskipTests
+    - mvn package -DskipTests
   when: on_success
   artifacts:
       expire_in: 1 hrs
