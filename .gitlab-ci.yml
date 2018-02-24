@@ -7,11 +7,41 @@ stages:
   - compile
   - test
   - build
+  - install
   - deploy
-  - other
 
-update_docker:
-  stage: other
+maven_compile:
+  stage: compile
+  script:
+    - mvn compile
+
+maven_test:
+  stage: test
+  script:
+    - mvn test
+  when: on_success
+
+maven_install:
+  stage: build
+  script:
+    - mvn package -DskipTests
+  when: on_success
+  only:
+    refs:
+      - master
+
+install_image:
+  stage: install
+  script:
+    - cd restservice/
+    - mvn install -Ddocker.host=http://10.10.1.6:2376
+  when: on_success
+  only:
+    refs:
+      - master
+
+deploy_image:
+  stage: deploy
   script:
     - mkdir ~/.ssh
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
@@ -19,3 +49,7 @@ update_docker:
     - ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
     - echo "$SSH_HOST_KEYS" > ~/.ssh/known_hosts
     - ssh jobswitch@$IP_DOCKER "sudo ./startMylabClean.sh"
+  when: on_success
+  only:
+    refs:
+      - master
