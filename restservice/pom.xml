@@ -116,6 +116,9 @@
                             <dockerDirectory>src/main/docker</dockerDirectory>
                             <dockerHost>${docker.host}</dockerHost>
                             <dockerCertPath></dockerCertPath>
+                            <buildArgs>
+                                <JAR_FILE>target/restservice.jar</JAR_FILE>
+                            </buildArgs>
                             <resources>
                                 <resource>
                                     <directory>${project.build.directory}</directory>
