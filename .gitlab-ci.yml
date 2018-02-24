@@ -40,5 +40,5 @@ update_docker:
   stage: other
   image: docker:stable
   script:
-      - docker -H=10.10.1.6:2376 rmi $(docker -H=10.10.1.6:2376 images --filter dangling=true -q 2>/dev/null) 2>/dev/null
       - docker -H=10.10.1.6:2376 rm -v $(docker -H=10.10.1.6:2376 ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+      - docker -H=10.10.1.6:2376 rmi $(docker -H=10.10.1.6:2376 images --filter dangling=true -q 2>/dev/null) 2>/dev/null
