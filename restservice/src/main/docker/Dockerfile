@@ -1,3 +1,3 @@
 FROM openjdk:8-jdk-alpine
-ADD target/restservice.jar app.jar
+ADD restservice/target/restservice.jar app.jar
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
