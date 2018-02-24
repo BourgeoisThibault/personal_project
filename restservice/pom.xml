@@ -18,7 +18,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <docker.image.prefix>springio</docker.image.prefix>
+        <docker.image.prefix>jobswitch</docker.image.prefix>
+        <docker.image.name>rest</docker.image.name>
+        <docker.image.version>1.0</docker.image.version>
     </properties>
 
     <dependencyManagement>
@@ -77,6 +79,12 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -92,7 +100,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
@@ -105,16 +112,13 @@
                         </goals>
                         <phase>install</phase>
                         <configuration>
-                            <imageName>${project.artifactId}</imageName>
+                            <imageName>${docker.image.prefix}${docker.image.name}</imageName>
                             <dockerDirectory>src/main/docker</dockerDirectory>
                             <dockerHost>${docker.host}</dockerHost>
                             <dockerCertPath></dockerCertPath>
                             <resources>
                                 <resource>
-
-                                    <directory>
-                                        ${project.build.directory}
-                                    </directory>
+                                    <directory>${project.build.directory}</directory>
                                     <include></include>
                                 </resource>
                             </resources>
@@ -122,7 +126,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
         <finalName>restservice</finalName>
     </build>
