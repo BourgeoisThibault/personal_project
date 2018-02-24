@@ -7,42 +7,8 @@ stages:
   - deploy
   - other
 
-maven_compile:
-  stage: compile
-  script:
-    - mvn compile
-
-maven_test:
-  stage: test
-  script:
-    - mvn test
-  when: on_success
-
-maven_install:
-  stage: build
-  script:
-    - mvn package -DskipTests
-  when: on_success
-  artifacts:
-      expire_in: 1 hrs
-      paths:
-      - restservice/target/restservice.jar
-  only:
-    refs:
-      - master
-
-deploy_rest:
-  stage: deploy
-  script:
-    - cd restservice/
-    - mvn install -Ddocker.host=http://10.10.1.6:2376
-  when: on_success
-  only:
-    refs:
-      - master
-
 update_docker:
   stage: other
   image: docker:stable
   script:
-      - docker -H=10.10.1.6:2376 ps
+      - docker -H=10.10.1.6:2376 rmi $(docker -H=10.10.1.6:2376 | grep "^<none>")
