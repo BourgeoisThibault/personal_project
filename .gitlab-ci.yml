@@ -7,7 +7,6 @@ stages:
   - compile
   - test
   - package
-  - install
   - deploy
 
 compiling:
@@ -30,19 +29,11 @@ packaging:
     refs:
       - master
 
-install_image:
-  stage: install
-  script:
-    - cd restservice/
-    - mvn install -Ddocker.host=http://10.10.1.6:2376
-  when: on_success
-  only:
-    refs:
-      - master
-
 deploy_image:
   stage: deploy
   script:
+    - cd restservice/
+    - mvn install -Ddocker.host=http://$IP_DOCKER:2376
     - mkdir ~/.ssh
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 700 ~/.ssh/id_rsa
