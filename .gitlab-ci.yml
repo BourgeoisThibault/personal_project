@@ -35,6 +35,7 @@ deploy_rest:
   script:
     - cd restservice/
     - mvn install -Ddocker.host=http://10.10.1.6:2376
+    - docker -H=10.10.1.6:2376 ps
   when: on_success
   only:
     refs:
