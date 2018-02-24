@@ -119,12 +119,6 @@
                             <buildArgs>
                                 <JAR_FILE>target/restservice.jar</JAR_FILE>
                             </buildArgs>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}</directory>
-                                    <include></include>
-                                </resource>
-                            </resources>
                         </configuration>
                     </execution>
                 </executions>
