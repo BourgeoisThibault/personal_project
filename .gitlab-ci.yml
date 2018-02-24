@@ -1,5 +1,8 @@
 image: maven:3.3.9-jdk-8
 
+variables:
+  IP_DOCKER: "10.10.1.6"
+
 stages:
   - compile
   - test
@@ -38,7 +41,10 @@ deploy_rest:
 
 update_docker:
   stage: other
-  image: docker:stable
   script:
-      - docker -H=10.10.1.6:2376 rm -v $(docker -H=10.10.1.6:2376 ps --filter status=exited -q 2>/dev/null) 2>/dev/null
-      - docker -H=10.10.1.6:2376 rmi $(docker -H=10.10.1.6:2376 images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+    - mkdir ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
+    - echo "$SSH_HOST_KEYS" > ~/.ssh/known_hosts
+    - ssh esibank@$IP_DOCKER "sudo /home/jobswitch/./startMylabClean.sh"
