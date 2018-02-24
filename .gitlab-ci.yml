@@ -6,23 +6,23 @@ variables:
 stages:
   - compile
   - test
-  - build
+  - package
   - install
   - deploy
 
-maven_compile:
+compiling:
   stage: compile
   script:
     - mvn compile
 
-maven_test:
+testing:
   stage: test
   script:
     - mvn test
   when: on_success
 
-maven_install:
-  stage: build
+packaging:
+  stage: package
   script:
     - mvn package -DskipTests
   when: on_success
