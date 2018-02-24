@@ -113,12 +113,16 @@
                         <phase>install</phase>
                         <configuration>
                             <imageName>${docker.image.prefix}${docker.image.name}</imageName>
-                            <dockerDirectory>src/main/docker</dockerDirectory>
+                            <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
                             <dockerHost>${docker.host}</dockerHost>
                             <dockerCertPath></dockerCertPath>
-                            <buildArgs>
-                                <JAR_FILE>target/restservice.jar</JAR_FILE>
-                            </buildArgs>
+                            <resources>
+                                <resource>
+                                    <targetPath>/</targetPath>
+                                    <directory>${project.build.directory}</directory>
+                                    <include>${project.build.finalName}.jar</include>
+                                </resource>
+                            </resources>
                         </configuration>
                     </execution>
                 </executions>
