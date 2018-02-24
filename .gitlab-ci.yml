@@ -6,11 +6,22 @@ stages:
   - build
   - deploy
 
+maven_compile:
+  stage: compile
+  script:
+    - mvn compile
+
+maven_test:
+  stage: test
+  script:
+    - mvn test
+  when: on_success
+
 maven_install:
   stage: build
   script:
-    - mvn install -DskipTests
-    - ls
+    - mvn package -DskipTests
+  when: on_success
   artifacts:
       expire_in: 1 hrs
       paths:
@@ -21,6 +32,8 @@ maven_install:
 
 deploy_rest:
   stage: deploy
+  dependencies:
+    - maven_install
   script:
     - cd restservice/
     - mvn install -Ddocker.host=http://10.10.1.6:2376
