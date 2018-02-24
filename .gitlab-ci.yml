@@ -7,8 +7,38 @@ stages:
   - deploy
   - other
 
+maven_compile:
+  stage: compile
+  script:
+    - mvn compile
+
+maven_test:
+  stage: test
+  script:
+    - mvn test
+  when: on_success
+
+maven_install:
+  stage: build
+  script:
+    - mvn package -DskipTests
+  only:
+    refs:
+      - master
+
+deploy_rest:
+  stage: deploy
+  script:
+    - cd restservice/
+    - mvn install -Ddocker.host=http://10.10.1.6:2376
+  when: on_success
+  only:
+    refs:
+      - master
+
 update_docker:
   stage: other
   image: docker:stable
   script:
-      - docker -H=10.10.1.6:2376 rmi $(docker -H=10.10.1.6:2376 | grep "^<none>")
+      - docker -H=10.10.1.6:2376 rmi $(docker -H=10.10.1.6:2376 images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+      - docker -H=10.10.1.6:2376 rm -v $(docker -H=10.10.1.6:2376 ps --filter status=exited -q 2>/dev/null) 2>/dev/null
