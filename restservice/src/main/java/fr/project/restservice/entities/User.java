@@ -7,17 +7,19 @@ import javax.persistence.*;
 
 /**
  * @author BOURGEOIS Thibault
- * Date     20/02/2018
- * Time     22:49
+ * Date     25/02/2018
+ * Time     19:05
  */
 @Data
 @ToString
 @Entity
-public class Sample {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
     @Column
-    private String myString;
+    private String firstName;
+    @Column
+    private String lastName;
 }
