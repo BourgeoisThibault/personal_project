@@ -22,4 +22,12 @@ public class User {
     private String firstName;
     @Column
     private String lastName;
+    @Column
+    private String mail;
+    @Column
+    private String pseudo;
+    @Column
+    private String password;
+    @Column
+    private String dateOfBirth;
 }

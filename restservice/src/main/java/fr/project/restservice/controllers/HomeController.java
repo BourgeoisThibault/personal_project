@@ -2,6 +2,7 @@ package fr.project.restservice.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.project.restservice.entities.Sample;
+import fr.project.restservice.entities.User;
 import fr.project.restservice.services.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
