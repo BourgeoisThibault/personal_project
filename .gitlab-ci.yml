@@ -25,9 +25,6 @@ packaging:
   script:
     - mvn package -DskipTests
   when: on_success
-  only:
-    refs:
-      - master
 
 deploy_image:
   stage: deploy
