@@ -28,5 +28,5 @@ public class UserProfileService {
         List<UserProfile> userProfileList= (List<UserProfile>) userProfileRepo.findAll();
         return userProfileList;
     }
-    
+
 }
