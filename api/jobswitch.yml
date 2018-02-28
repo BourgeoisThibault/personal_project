@@ -4,15 +4,13 @@ info:
   version: 1.0.0
   title: API JobSwitch
   contact:
-    name: BOURGEOIS Thibault & EDERY Ruben
+    name: BOURGEOIS Thibault
     email: thibault.bourgeois@etu.u-pec.fr
 host: 'rest.jobswitch.inside.esiag.info'
 basePath: /
 tags:
   - name: sample
     description: operation sample
-schemes:
-  - http
 paths:
   '/sample':
     get:

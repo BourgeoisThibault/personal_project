@@ -78,6 +78,7 @@ window.onload = function() {
   const ui = SwaggerUIBundle({
     url: "jobswitch.yml",
     dom_id: '#swagger-ui',
+      validatorUrl: null,
     deepLinking: true,
     presets: [
       SwaggerUIBundle.presets.apis,
@@ -85,8 +86,7 @@ window.onload = function() {
     ],
     plugins: [
       SwaggerUIBundle.plugins.DownloadUrl
-    ],
-    layout: "StandaloneLayout"
+    ]
   })
 
   window.ui = ui
