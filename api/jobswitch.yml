@@ -1,4 +1,4 @@
-swagger: '2.0'
+#swagger: '2.0'
 info:
   description: Description d'utilisation de l'API de l'application REST de JobSwitch.
   version: 1.0.0
@@ -11,6 +11,14 @@ basePath: /
 tags:
   - name: sample
     description: operation sample
+  - name: user
+    description: operation user
+  - name: workplace
+    description: operation workplace
+  - name: workentity
+    description: operation workentity
+  - name: userprofile
+    description: operation userprofile
 paths:
   '/sample':
     get:
@@ -27,6 +35,66 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Sample'
+  /user/:
+    get:
+      tags:
+        - user
+      summary: Get all users
+      description: ''
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+  /workplace/:
+    get:
+      tags:
+        - workplace
+      summary: Get all workplace
+      description: ''
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Workplace'
+  /workentity/:
+    get:
+      tags:
+        - workentity
+      summary: Get all workEntity
+      description: ''
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WorkEntity'
+  /profile/:
+    get:
+      tags:
+        - userprofile
+      summary: Get all workEntity
+      description: ''
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserProfile'
 definitions:
   Sample:
     type: object
@@ -38,3 +106,61 @@ definitions:
       myString:
         type: string
         example: test
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      firstName:
+        type: string
+        example: Thibault
+      lastName:
+        type: string
+        example: BOURGEOIS
+      mail:
+        type: string
+        example: thibault.bourgeois@etu.u-pec.fr
+      pseudo:
+        type: string
+        example: ncna
+      password:
+        type: string
+        example: RSA('mypass')
+      dateOfBirth:
+        type: string
+        example: 06/07/1993
+  WorkEntity:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      wording:
+        type: string
+        example: Metro 1
+  Workplace:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      wording:
+        type: string
+        example: Chauffeur
+  UserProfile:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      user:
+        $ref: '#/definitions/User'
+      workplace:
+        $ref: '#/definitions/Workplace'
+      workEntity:
+        $ref: '#/definitions/WorkEntity'
