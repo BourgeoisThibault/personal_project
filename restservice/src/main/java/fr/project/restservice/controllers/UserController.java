@@ -3,7 +3,6 @@ package fr.project.restservice.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.project.restservice.entities.User;
 import fr.project.restservice.models.Error;
-import fr.project.restservice.services.UserProfileService;
 import fr.project.restservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

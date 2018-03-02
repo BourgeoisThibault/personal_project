@@ -30,4 +30,8 @@ public class User {
     private String password;
     @Column
     private String dateOfBirth;
+    @ManyToOne
+    private WorkEntity workEntity;
+    @ManyToOne
+    private Workplace workplace;
 }
