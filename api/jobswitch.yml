@@ -48,6 +48,27 @@ paths:
             type: array
             items:
               $ref: '#/definitions/User'
+    post:
+      tags:
+        - user
+      summary: Create one users
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "User to add"
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
   /user/{id}:
     get:
       tags:

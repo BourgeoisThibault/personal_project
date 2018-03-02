@@ -5,6 +5,7 @@ import fr.project.restservice.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -25,6 +26,10 @@ public class UserService {
     public List<User> getAllUsers(){
         List<User> userList= (List<User>) userRepo.findAll();
         return userList;
+    }
+
+    public User createOneUser(User user) {
+        return userRepo.save(user);
     }
 
     public User getOneUser(Long id){

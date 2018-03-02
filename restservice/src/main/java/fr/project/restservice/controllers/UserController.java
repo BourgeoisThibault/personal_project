@@ -31,6 +31,17 @@ public class UserController {
         return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
+    public ResponseEntity createNewUser(@RequestBody User user) {
+        User newUser = userService.createOneUser(user);
+        if (user != null)
+            return new ResponseEntity(newUser,HttpStatus.OK);
+        else {
+            Error error = new Error("404","User not found");
+            return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
     public ResponseEntity getUserById(@PathVariable Long id) {
         User user = userService.getOneUser(id);
