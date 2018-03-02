@@ -27,4 +27,8 @@ public class UserService {
         return userList;
     }
 
+    public User getOneUser(Long id){
+        return userRepo.findOne(id);
+    }
+
 }
