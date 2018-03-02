@@ -50,6 +50,26 @@ paths:
             type: array
             items:
               $ref: '#/definitions/User'
+  /user/{id}:
+    get:
+      tags:
+        - user
+      summary: Get user by id
+      description: ''
+      produces:
+        - application/json
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of user to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
   /workplace/:
     get:
       tags:
