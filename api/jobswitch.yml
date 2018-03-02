@@ -138,10 +138,10 @@ definitions:
       dateOfBirth:
         type: string
         example: 06/07/1993
-      workplace:
-        $ref: '#/definitions/Workplace'
       workEntity:
         $ref: '#/definitions/WorkEntity'
+      workplace:
+        $ref: '#/definitions/Workplace'
   WorkEntity:
     type: object
     properties:
