@@ -6,7 +6,7 @@ info:
   contact:
     name: BOURGEOIS Thibault
     email: thibault.bourgeois@etu.u-pec.fr
-host: 'rest.jobswitch.inside.esiag.info'
+host: rest.jobswitch.inside.esiag.info
 basePath: /
 tags:
   - name: sample
@@ -58,17 +58,46 @@ paths:
       produces:
         - application/json
       parameters:
-        - in: "body"
-          name: "body"
+        - name: user
+          in: body
           description: "User to add"
-          required: true
           schema:
             $ref: "#/definitions/User"
+          required: true
       responses:
         '200':
           description: Success
           schema:
             $ref: '#/definitions/User'
+        '409':
+          description: Conflit
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      tags:
+        - user
+      summary: Update one users
+      description: ''
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: user
+          in: body
+          description: "User to update"
+          schema:
+            $ref: "#/definitions/User"
+          required: true
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          description: Not found
+          schema:
+            $ref: '#/definitions/Error'
   /user/{id}:
     get:
       tags:

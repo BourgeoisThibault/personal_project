@@ -36,4 +36,14 @@ public class UserService {
         return userRepo.findOne(id);
     }
 
+    public User getOneUserByPseudo(String pseudo) {
+        return userRepo.findByPseudo(pseudo);
+    }
+
+    public User updateUser(User user) {
+        User userTmp = userRepo.findOne(user.getId());
+        if(userTmp== null)
+            return null;
+        return userRepo.save(user);
+    }
 }

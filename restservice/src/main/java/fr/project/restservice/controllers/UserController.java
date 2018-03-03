@@ -33,12 +33,25 @@ public class UserController {
 
     @RequestMapping(path = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
     public ResponseEntity createNewUser(@RequestBody User user) {
-        User newUser = userService.createOneUser(user);
-        if (user != null)
-            return new ResponseEntity(newUser,HttpStatus.OK);
-        else {
-            Error error = new Error("404","User not found");
-            return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+        User newUser = userService.getOneUserByPseudo(user.getPseudo());
+        if (newUser == null) {
+            newUser = userService.createOneUser(user);
+            return new ResponseEntity(newUser, HttpStatus.OK);
+        } else {
+            Error error = new Error("409","User already exist");
+            return new ResponseEntity(error, HttpStatus.CONFLICT);
+        }
+    }
+
+    @RequestMapping(path = "/", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
+    public ResponseEntity updateUser(@RequestBody User user) {
+
+        User updateUser = userService.updateUser(user);
+        if (updateUser != null) {
+            return new ResponseEntity(updateUser, HttpStatus.OK);
+        } else {
+            Error error = new Error("404","User " + user.getPseudo() + " (" + user.getId() + ")" + " not found");
+            return new ResponseEntity(error, HttpStatus.CONFLICT);
         }
     }
 
