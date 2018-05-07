@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>restservice</module>
+        <module>webservice</module>
     </modules>
 
     <properties>
