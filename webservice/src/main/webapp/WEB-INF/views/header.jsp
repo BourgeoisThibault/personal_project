@@ -35,7 +35,7 @@
         </div>
         -->
 
-        <div style="visibility: hidden" class="top-nav notification-row">
+        <div class="top-nav notification-row">
             <!-- notificatoin dropdown start-->
             <ul class="nav pull-right top-menu">
                 <!-- alert notification end-->
@@ -51,16 +51,13 @@
                     <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
                         <li class="eborder-top">
-                            <a href="#"><i class="icon_profile"></i> My Profile</a>
+                            <a href="#"><i class="icon_profile"></i> Mon profile</a>
                         </li>
                         <li>
-                            <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                            <a href="/logout"><i class="icon_mail_alt"></i> Boîte à lettre</a>
                         </li>
                         <li>
-                            <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-                        </li>
-                        <li>
-                            <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
+                            <a href="/logout"><i class="icon_key_alt"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>

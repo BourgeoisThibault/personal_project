@@ -36,7 +36,7 @@
     <meta name="msapplication-TileImage" content="${contextPath}/resources/All_Icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Esibank</title>
+    <title>JobSwitch</title>
 
     <!-- Bootstrap CSS -->
     <link href="${contextPath}/resources/template/css/bootstrap.min.css" rel="stylesheet">

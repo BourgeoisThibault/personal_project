@@ -18,6 +18,16 @@
                 <img id="myImg" src="${contextPath}/resources/img/Logo.png" width="150px"/>
             </p>
 
+
+            <c:choose>
+                <c:when test="${empty param.error}">
+                </c:when>
+                <c:otherwise>
+                    <span style="background-color: #a10000; color: #aed0ea" class="input-group-addon" style="font-size: large"><strong><c:out value="${param.error}" /></strong></span>
+                    </br>
+                </c:otherwise>
+            </c:choose>
+
             <div id="myMsg" style="display: none" class="input-group">
                 <span class="input-group-addon" style="font-size: large">Vérification en cours...</span>
             </div>

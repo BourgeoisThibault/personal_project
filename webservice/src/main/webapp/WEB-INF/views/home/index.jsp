@@ -36,8 +36,8 @@
                 <a href="/prototype/add">
                 <div class="info-box brown-bg">
                     <i class="fa fa-user"></i>
-                    <div class="count">Ajouter</div>
-                    <div class="title">Prototype</div>
+                    <div class="count">${session_first_name}</div>
+                    <div class="title">${session_last_name}</div>
                 </div><!--/.info-box-->
                 </a>
             </div><!--/.col-->
