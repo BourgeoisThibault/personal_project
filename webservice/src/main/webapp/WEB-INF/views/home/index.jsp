@@ -22,10 +22,10 @@
 
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                <a href="/prototype/list">
+                <a href="/login">
                 <div class="info-box blue-bg">
                     <i class="fa fa-users"></i>
-                    <div class="count">Lister</div>
+                    <div class="count">Login</div>
                     <div class="title">Prototype</div>
                 </div><!--/.info-box-->
                 </a>
