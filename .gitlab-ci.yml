@@ -31,9 +31,9 @@ deploy_image:
   script:
     - cd restservice/
     - mvn install -Ddocker.host=http://$IP_DOCKER:2376
+    - cd ../
     - cd webservice/
     - mvn install -Ddocker.host=http://$IP_DOCKER:2376
-    - cd ../
     - mkdir ~/.ssh
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 700 ~/.ssh/id_rsa
