@@ -1,6 +1,5 @@
 package fr.project.webservice.controllers;
 
-import com.sun.deploy.net.HttpResponse;
 import fr.project.webservice.service.loginServ;
 import models.User_;
 import org.springframework.beans.factory.annotation.Autowired;
