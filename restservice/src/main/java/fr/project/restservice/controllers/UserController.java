@@ -4,13 +4,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.project.restservice.entities.User;
 import fr.project.restservice.models.Error;
 import fr.project.restservice.services.UserService;
+import methods.Crypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -64,6 +68,40 @@ public class UserController {
             Error error = new Error("404","User " + id + " not found");
             return new ResponseEntity(error, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @RequestMapping(path = "/login/{pseudo}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    public ResponseEntity getUserByPseudo(@PathVariable String pseudo) {
+        User user = userService.getOneUserByPseudo(pseudo);
+        if (user != null)
+            return new ResponseEntity(user,HttpStatus.OK);
+        else {
+            Error error = new Error("404","User " + pseudo + " not found");
+            return new ResponseEntity(error, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping(value = "/checking")
+    public ResponseEntity checkingUser(
+            @RequestHeader(value = "login") String login,
+            @RequestHeader(value = "pass") String pass) {
+
+        try {
+
+            User user = userService.getOneUserByPseudo(login);
+
+            if(user == null)
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+
+            if (user.getPassword().equals(Crypt.getHash(pass)))
+                return new ResponseEntity(HttpStatus.OK);
+            else
+                return new ResponseEntity(HttpStatus.UNAUTHORIZED);
+
+        } catch (HttpClientErrorException ex) {
+            return new ResponseEntity(ex.getStatusCode());
+        }
+
     }
 
 }

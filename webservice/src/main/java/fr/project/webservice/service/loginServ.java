@@ -1,5 +1,7 @@
 package fr.project.webservice.service;
 
+import com.sun.deploy.net.HttpResponse;
+import models.User_;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,9 +26,9 @@ public class loginServ {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    public Boolean connectUser(String login, String pass){
+    public HttpStatus connectUser(String login, String pass){
 
-        String finalUrl = linkREST + "login/checking";
+        String finalUrl = linkREST + "user/checking";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("login", login);
@@ -35,10 +37,14 @@ public class loginServ {
 
         try {
             restTemplate.exchange(finalUrl, GET, entity, String.class);
-            return true;
+            return HttpStatus.OK;
         } catch (HttpClientErrorException ex) {
-            return false;
+            return ex.getStatusCode();
         }
+    }
+
+    public User_ getUserInformations(String login) {
+        return restTemplate.getForObject(linkREST + "user/login/" + login, User_.class);
     }
 
 }

@@ -45,19 +45,19 @@
                             <span class="profile-ava">
                                 <img alt="" src="#">
                             </span>
-                        <span class="username">Administrator</span>
+                        <span class="username">${session_profile}</span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
                         <li class="eborder-top">
-                            <a href="#"><i class="icon_profile"></i> Mon profile</a>
+                            <a href="#"><i class="icon_profile"></i> ${session_first_name} ${session_last_name}</a>
                         </li>
                         <li>
                             <a href="/logout"><i class="icon_mail_alt"></i> Boîte à lettre</a>
                         </li>
                         <li>
-                            <a href="/logout"><i class="icon_key_alt"></i> Log Out</a>
+                            <a href="/logout"><i class="icon_key_alt"></i> Déconnexion</a>
                         </li>
                     </ul>
                 </li>

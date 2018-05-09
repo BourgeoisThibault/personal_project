@@ -11,6 +11,7 @@
     <modules>
         <module>restservice</module>
         <module>webservice</module>
+        <module>util-service</module>
     </modules>
 
     <properties>

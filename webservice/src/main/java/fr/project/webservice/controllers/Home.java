@@ -1,8 +1,11 @@
 package fr.project.webservice.controllers;
 
+import com.sun.deploy.net.HttpResponse;
 import fr.project.webservice.service.loginServ;
+import models.User_;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,21 +76,29 @@ public class Home {
             return modelAndView;
         }
 
-        Thread.sleep(5000);
+        HttpStatus httpStatus = loginServ.connectUser(login,pass);
 
-        if(loginServ.connectUser(login,pass))
+        if(httpStatus.equals(HttpStatus.OK))
         {
+            User_ user_ = loginServ.getUserInformations(login);
+
             session.setAttribute("isConnect", true);
-            session.setAttribute("first_name", "Thibault");
-            session.setAttribute("last_name", "BOURGEOIS");
-            session.setAttribute("profile", "Administrateur");
-            ModelAndView modelAndView = new ModelAndView("redirect:/");
-            return modelAndView;
-        }else
-        {
-            session.removeAttribute("isConnect");
-            ModelAndView modelAndView = new ModelAndView("redirect:/login?error=Erreur de connexion");
-            return modelAndView;
+            session.setAttribute("first_name", user_.getFirstName());
+            session.setAttribute("last_name", user_.getLastName());
+            session.setAttribute("pseudo", user_.getPseudo());
+            session.setAttribute("profile", "To define");
+
+            return new ModelAndView("redirect:/");
         }
+
+        session.removeAttribute("isConnect");
+
+        if(httpStatus.equals(HttpStatus.NOT_FOUND))
+            return new ModelAndView("redirect:/login?error=Utilisateur inconnu");
+
+        if(httpStatus.equals(HttpStatus.UNAUTHORIZED))
+            return new ModelAndView("redirect:/login?error=Mot de passe incorrect");
+
+        return new ModelAndView("redirect:/login?error=Erreur inconnu");
     }
 }
