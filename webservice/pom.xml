@@ -93,7 +93,7 @@
                         <configuration>
                             <imageName>${docker.image.prefix}${docker.image.name}</imageName>
                             <dockerDirectory>${basedir}/src/main/docker</dockerDirectory>
-                            <dockerHost>${docker.host}</dockerHost>
+                            <dockerHost>http://10.10.1.6:2376</dockerHost>
                             <dockerCertPath></dockerCertPath>
                             <resources>
                                 <resource>

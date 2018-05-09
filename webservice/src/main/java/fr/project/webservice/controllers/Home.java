@@ -1,9 +1,8 @@
 package fr.project.webservice.controllers;
 
-import fr.project.webservice.service.loginServ;
+import fr.project.webservice.service.LoginService;
 import models.User_;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +23,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class Home {
 
-    @Autowired
-    loginServ loginServ;
-
     @RequestMapping(value = "/", method = GET)
     public ModelAndView GetHome(HttpSession session) {
         if(session.getAttribute("isConnect")==null)
@@ -42,62 +38,4 @@ public class Home {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/logout", method = GET)
-    public String GetLogout(HttpSession session) {
-        if (session.getAttribute("isConnect") == null)
-            return "redirect:/";
-
-        session.removeAttribute("isConnect");
-        return "redirect:/";
-    }
-
-    @RequestMapping(value = "/login", method = GET)
-    public ModelAndView GetLogin(@RequestParam(name = "error",required = false) String error,
-            HttpSession session) {
-        if (session.getAttribute("isConnect") != null)
-        {
-            ModelAndView modelAndView = new ModelAndView("redirect:/");
-            return modelAndView;
-        }
-
-        ModelAndView modelAndView = new ModelAndView("home/login");
-        modelAndView.addObject("error",error);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/login", method = POST)
-    public ModelAndView SetLogin(@RequestParam("login") String login,
-                           @RequestParam("pass") String pass,
-                           HttpSession session) throws InterruptedException {
-        if (session.getAttribute("isConnect") != null)
-        {
-            ModelAndView modelAndView = new ModelAndView("redirect:/");
-            return modelAndView;
-        }
-
-        HttpStatus httpStatus = loginServ.connectUser(login,pass);
-
-        if(httpStatus.equals(HttpStatus.OK))
-        {
-            User_ user_ = loginServ.getUserInformations(login);
-
-            session.setAttribute("isConnect", true);
-            session.setAttribute("first_name", user_.getFirstName());
-            session.setAttribute("last_name", user_.getLastName());
-            session.setAttribute("pseudo", user_.getPseudo());
-            session.setAttribute("profile", "To define");
-
-            return new ModelAndView("redirect:/");
-        }
-
-        session.removeAttribute("isConnect");
-
-        if(httpStatus.equals(HttpStatus.NOT_FOUND))
-            return new ModelAndView("redirect:/login?error=Utilisateur inconnu");
-
-        if(httpStatus.equals(HttpStatus.UNAUTHORIZED))
-            return new ModelAndView("redirect:/login?error=Mot de passe incorrect");
-
-        return new ModelAndView("redirect:/login?error=Erreur inconnu");
-    }
 }

@@ -17,7 +17,7 @@ import static org.springframework.http.HttpMethod.GET;
  * Time     00:14
  */
 @Service
-public class loginServ {
+public class LoginService {
 
     @Value("${link.rest}")
     private String linkREST;

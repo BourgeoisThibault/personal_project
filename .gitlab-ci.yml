@@ -29,11 +29,7 @@ packaging:
 deploy_image:
   stage: deploy
   script:
-    - cd restservice/
-    - mvn install -Ddocker.host=http://$IP_DOCKER:2376
-    - cd ../
-    - cd webservice/
-    - mvn install -Ddocker.host=http://$IP_DOCKER:2376
+    - mvn install -pl web-service,rest-service -am
     - mkdir ~/.ssh
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 700 ~/.ssh/id_rsa
