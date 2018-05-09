@@ -29,7 +29,7 @@ packaging:
 deploy_image:
   stage: deploy
   script:
-    - mvn install -pl web-service,rest-service -am
+    - mvn install -pl webservice,restservice -am
     - mkdir ~/.ssh
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     - chmod 700 ~/.ssh/id_rsa
