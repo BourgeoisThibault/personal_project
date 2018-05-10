@@ -45,7 +45,7 @@ public class Login {
         if (session.getAttribute("isConnect") != null)
             session.removeAttribute("isConnect");
 
-        ModelAndView modelAndView = new ModelAndView("home/findPassword");
+        ModelAndView modelAndView = new ModelAndView("account/findPassword");
         return modelAndView;
     }
 
@@ -72,7 +72,7 @@ public class Login {
             return modelAndView;
         }
 
-        ModelAndView modelAndView = new ModelAndView("home/login");
+        ModelAndView modelAndView = new ModelAndView("account/login");
         modelAndView.addObject("error",error);
         modelAndView.addObject("message",message);
         return modelAndView;

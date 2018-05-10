@@ -86,18 +86,6 @@
                     </a>
                 </li>
                 <li>
-                    <a class="" href="/notification">
-                        <i class="fa fa-paper-plane"></i>
-                        <span>Notification</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="http://file.esibank.inside.esiag.info/app-debug.apk">
-                        <i class="icon_download"></i>
-                        <span>Android Application</span>
-                    </a>
-                </li>
-                <li>
                     <a class="" href="/about">
                         <i class="icon_info_alt"></i>
                         <span>A propos</span>
