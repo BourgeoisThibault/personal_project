@@ -39,8 +39,31 @@ public class Login {
         return "redirect:../";
     }
 
+    @RequestMapping(value = "/forgot", method = GET)
+    public ModelAndView GetNewPassword(HttpSession session) {
+
+        if (session.getAttribute("isConnect") != null)
+            session.removeAttribute("isConnect");
+
+        ModelAndView modelAndView = new ModelAndView("home/findPassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/forgot", method = POST)
+    public ModelAndView setNewPass(@RequestParam("mail") String mail,
+                                 HttpSession session) {
+        if (session.getAttribute("isConnect") != null)
+            session.removeAttribute("isConnect");
+
+        loginService.sendNewPassword(mail);
+
+        return new ModelAndView("redirect:../login/?message=Email envoyé");
+
+    }
+
     @RequestMapping(value = "/", method = GET)
     public ModelAndView GetLogin(@RequestParam(name = "error",required = false) String error,
+                                 @RequestParam(name = "message",required = false) String message,
                                  HttpSession session) {
 
         if (session.getAttribute("isConnect") != null)
@@ -51,6 +74,7 @@ public class Login {
 
         ModelAndView modelAndView = new ModelAndView("home/login");
         modelAndView.addObject("error",error);
+        modelAndView.addObject("message",message);
         return modelAndView;
     }
 

@@ -45,4 +45,8 @@ public class LoginService {
         return restTemplate.getForObject(linkREST + "user/login/" + login, User_.class);
     }
 
+    public void sendNewPassword(String mail) {
+
+    }
+
 }

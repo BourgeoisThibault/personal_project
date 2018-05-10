@@ -23,7 +23,16 @@
                 <c:when test="${empty param.error}">
                 </c:when>
                 <c:otherwise>
-                    <span style="background-color: #a10000; color: #aed0ea" class="input-group-addon" style="font-size: large"><strong><c:out value="${param.error}" /></strong></span>
+                    <span id="message" style="background-color: #a10000; color: #aed0ea" class="input-group-addon" style="font-size: large"><strong><c:out value="${param.error}" /></strong></span>
+                    </br>
+                </c:otherwise>
+            </c:choose>
+
+            <c:choose>
+                <c:when test="${empty param.message}">
+                </c:when>
+                <c:otherwise>
+                    <span id="message" style="background-color: #5b9909; color: #aed0ea" class="input-group-addon" style="font-size: large"><strong><c:out value="${param.message}" /></strong></span>
                     </br>
                 </c:otherwise>
             </c:choose>
@@ -42,7 +51,7 @@
             </div>
             <label id="myForgot" class="checkbox">
                 <span class="pull-right">
-                    <a href="#"> Mot de passe oublié?</a>
+                    <a href="/login/forgot"> Mot de passe oublié?</a>
                 </span>
             </label>
             <button id="connectButton" class="btn btn-primary btn-lg btn-block" type="submit">Connexion</button>
@@ -62,6 +71,7 @@
         document.getElementById('myForgot').style.display = 'none';
         document.getElementById('connectButton').style.display = 'none';
         document.getElementById('myMsg').style.display = 'block';
+        document.getElementById('message').style.display = 'none';
     }
 </script>
 
