@@ -33,10 +33,10 @@ public class Login {
     public String GetLogout(HttpSession session) {
 
         if (session.getAttribute("isConnect") == null)
-            return "redirect:/";
+            return "redirect:../";
 
         session.removeAttribute("isConnect");
-        return "redirect:/";
+        return "redirect:../";
     }
 
     @RequestMapping(value = "/", method = GET)
@@ -45,7 +45,7 @@ public class Login {
 
         if (session.getAttribute("isConnect") != null)
         {
-            ModelAndView modelAndView = new ModelAndView("redirect:/");
+            ModelAndView modelAndView = new ModelAndView("redirect:../");
             return modelAndView;
         }
 
@@ -60,7 +60,7 @@ public class Login {
                                  HttpSession session) throws InterruptedException {
         if (session.getAttribute("isConnect") != null)
         {
-            ModelAndView modelAndView = new ModelAndView("redirect:/");
+            ModelAndView modelAndView = new ModelAndView("redirect:../");
             return modelAndView;
         }
 
@@ -76,17 +76,17 @@ public class Login {
             session.setAttribute("pseudo", user_.getPseudo());
             session.setAttribute("profile", "To define");
 
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:../");
         }
 
         session.removeAttribute("isConnect");
 
         if(httpStatus.equals(HttpStatus.NOT_FOUND))
-            return new ModelAndView("redirect:/login?error=Utilisateur inconnu");
+            return new ModelAndView("redirect:../login/?error=Utilisateur inconnu");
 
         if(httpStatus.equals(HttpStatus.UNAUTHORIZED))
-            return new ModelAndView("redirect:/login?error=Mot de passe incorrect");
+            return new ModelAndView("redirect:../login/?error=Mot de passe incorrect");
 
-        return new ModelAndView("redirect:/login?error=Erreur inconnu");
+        return new ModelAndView("redirect:../login/?error=Erreur inconnu");
     }
 }

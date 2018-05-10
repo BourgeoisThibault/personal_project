@@ -54,10 +54,10 @@
                             <a href="#"><i class="icon_profile"></i> ${session_first_name} ${session_last_name}</a>
                         </li>
                         <li>
-                            <a href="/logout"><i class="icon_mail_alt"></i> Boîte à lettre</a>
+                            <a href="#"><i class="icon_mail_alt"></i> Boîte à lettre</a>
                         </li>
                         <li>
-                            <a href="/logout"><i class="icon_key_alt"></i> Déconnexion</a>
+                            <a href="/login/out"><i class="icon_key_alt"></i> Déconnexion</a>
                         </li>
                     </ul>
                 </li>

@@ -35,7 +35,7 @@ deploy_image:
     - chmod 700 ~/.ssh/id_rsa
     - ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
     - echo "$SSH_HOST_KEYS" > ~/.ssh/known_hosts
-    #- ssh jobswitch@$IP_DOCKER "rm -r public-html/"
+    - ssh jobswitch@$IP_DOCKER "rm -r public-html/"
     - scp -r api/ jobswitch@$IP_DOCKER:public-html/
     - ssh jobswitch@$IP_DOCKER "sudo ./startMylabClean.sh"
   when: on_success
