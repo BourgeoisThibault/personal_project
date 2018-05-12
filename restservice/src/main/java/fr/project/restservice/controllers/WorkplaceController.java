@@ -1,7 +1,7 @@
 package fr.project.restservice.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import fr.project.restservice.entities.Workplace;
+import fr.project.utils.entities.oldentities.Workplace;
 import fr.project.restservice.services.WorkplaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

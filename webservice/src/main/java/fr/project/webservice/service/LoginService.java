@@ -1,10 +1,9 @@
 package fr.project.webservice.service;
-import models.User_;
+import fr.project.utils.entities.oldentities.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -41,8 +40,8 @@ public class LoginService {
         }
     }
 
-    public User_ getUserInformations(String login) {
-        return restTemplate.getForObject(linkREST + "user/login/" + login, User_.class);
+    public User getUserInformations(String login) {
+        return restTemplate.getForObject(linkREST + "user/login/" + login, User.class);
     }
 
     public void sendNewPassword(String mail) {

@@ -1,7 +1,7 @@
 package fr.project.webservice.controllers;
 
+import fr.project.utils.entities.oldentities.User;
 import fr.project.webservice.service.LoginService;
-import models.User_;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -92,7 +92,7 @@ public class Login {
 
         if(httpStatus.equals(HttpStatus.OK))
         {
-            User_ user_ = loginService.getUserInformations(login);
+            User user_ = loginService.getUserInformations(login);
 
             session.setAttribute("isConnect", true);
             session.setAttribute("first_name", user_.getFirstName());

@@ -1,6 +1,6 @@
 package fr.project.restservice.repositories;
 
-import fr.project.restservice.entities.Sample;
+import fr.project.utils.entities.others.Sample;
 import org.springframework.data.repository.CrudRepository;
 
 /**

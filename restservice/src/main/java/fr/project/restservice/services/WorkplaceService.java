@@ -1,6 +1,6 @@
 package fr.project.restservice.services;
 
-import fr.project.restservice.entities.Workplace;
+import fr.project.utils.entities.oldentities.Workplace;
 import fr.project.restservice.repositories.WorkplaceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

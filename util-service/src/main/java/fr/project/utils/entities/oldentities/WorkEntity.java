@@ -1,4 +1,4 @@
-package fr.project.restservice.entities;
+package fr.project.utils.entities.oldentities;
 
 import lombok.Data;
 import lombok.ToString;

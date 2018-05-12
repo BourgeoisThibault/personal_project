@@ -1,4 +1,4 @@
-package fr.project.restservice.entities;
+package fr.project.utils.entities.oldentities;
 
 import lombok.Data;
 import lombok.ToString;
@@ -7,17 +7,17 @@ import javax.persistence.*;
 
 /**
  * @author BOURGEOIS Thibault
- * Date     20/02/2018
- * Time     22:49
+ * Date     26/02/2018
+ * Time     15:23
  */
 @Data
 @ToString
 @Entity
-public class Sample {
+public class Workplace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
     @Column
-    private String myString;
+    private String wording;
 }

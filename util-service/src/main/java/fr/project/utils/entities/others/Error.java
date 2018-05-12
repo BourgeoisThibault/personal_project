@@ -1,4 +1,4 @@
-package fr.project.restservice.models;
+package fr.project.utils.entities.others;
 
 import lombok.Data;
 import lombok.ToString;

@@ -1,9 +1,8 @@
 package fr.project.restservice.services;
 
-import fr.project.restservice.entities.Sample;
+import fr.project.utils.entities.others.Sample;
 import fr.project.restservice.repositories.SampleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,7 @@
 package fr.project.restservice.repositories;
 
-import fr.project.restservice.entities.WorkEntity;
+import fr.project.utils.entities.oldentities.WorkEntity;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.Repository;
 
 /**
  * @author BOURGEOIS Thibault

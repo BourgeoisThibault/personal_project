@@ -1,7 +1,6 @@
 package fr.project.webservice.controllers;
 
 import fr.project.webservice.service.LoginService;
-import models.User_;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

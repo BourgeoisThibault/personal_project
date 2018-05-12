@@ -1,8 +1,8 @@
 package fr.project.restservice.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import fr.project.restservice.entities.User;
-import fr.project.restservice.models.Error;
+import fr.project.utils.entities.oldentities.User;
+import fr.project.utils.entities.others.Error;
 import fr.project.restservice.services.UserService;
 import methods.Crypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
 import javax.ws.rs.core.MediaType;
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**

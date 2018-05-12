@@ -1,11 +1,10 @@
 package fr.project.restservice.services;
 
-import fr.project.restservice.entities.User;
+import fr.project.utils.entities.oldentities.User;
 import fr.project.restservice.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
