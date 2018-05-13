@@ -57,7 +57,7 @@
                             <a href="#"><i class="icon_mail_alt"></i> Boîte à lettre</a>
                         </li>
                         <li>
-                            <a href="/login/out"><i class="icon_key_alt"></i> Déconnexion</a>
+                            <a href="/sign/out"><i class="icon_key_alt"></i> Déconnexion</a>
                         </li>
                     </ul>
                 </li>

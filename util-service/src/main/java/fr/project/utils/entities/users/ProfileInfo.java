@@ -1,5 +1,6 @@
 package fr.project.utils.entities.users;
 
+import fr.project.utils.entities.params.WorkType;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -7,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author BOURGEOIS Thibault
@@ -16,7 +18,6 @@ import java.util.Date;
 
 @Data
 @ToString
-@Builder
 @Entity
 public class ProfileInfo implements Serializable {
     @Id
@@ -25,12 +26,16 @@ public class ProfileInfo implements Serializable {
     private Long id;
     @OneToOne
     private ProfileAccount profileAccount;
-    @Column
+    @Column(nullable = false)
     private String firstName;
-    @Column
+    @Column(nullable = false)
     private String lastName;
+    @Column
+    private String description;
     @Temporal(TemporalType.DATE)
     private Date birthday;
     @Temporal(TemporalType.TIMESTAMP)
     private Date registration;
+    @Column(nullable = false)
+    private String dreamJobs;
 }

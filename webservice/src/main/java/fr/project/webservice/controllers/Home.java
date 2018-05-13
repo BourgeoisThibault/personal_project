@@ -26,7 +26,7 @@ public class Home {
     public ModelAndView GetHome(HttpSession session) {
         if(session.getAttribute("isConnect")==null)
         {
-            ModelAndView modelAndView = new ModelAndView("redirect:/login/");
+            ModelAndView modelAndView = new ModelAndView("redirect:/sign/in");
             return modelAndView;
         }
 

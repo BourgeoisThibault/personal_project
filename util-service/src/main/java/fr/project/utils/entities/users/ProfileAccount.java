@@ -1,5 +1,6 @@
 package fr.project.utils.entities.users;
 
+import fr.project.utils.entities.params.ProfileType;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -15,7 +16,6 @@ import java.io.Serializable;
 
 @Data
 @ToString
-@Builder
 @Entity
 public class ProfileAccount implements Serializable {
     @Id
@@ -28,4 +28,6 @@ public class ProfileAccount implements Serializable {
     private String mail;
     @Column
     private String encryptedPass;
+    @OneToOne
+    private ProfileType profileType;
 }

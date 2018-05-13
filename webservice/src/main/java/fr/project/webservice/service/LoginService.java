@@ -1,11 +1,14 @@
 package fr.project.webservice.service;
 import fr.project.utils.entities.oldentities.User;
+import fr.project.utils.entities.users.ProfileInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import static org.springframework.http.HttpMethod.GET;
@@ -23,29 +26,37 @@ public class LoginService {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    public HttpStatus connectUser(String login, String pass){
+    public void sendNewPassword(String mail) {
 
-        String finalUrl = linkREST + "user/checking";
+    }
+
+    public ProfileInfo authentificateUser(String login, String pass) throws Exception {
+
+        String finalUrl = linkREST + "account/login/authentification";
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("login", login);
         headers.set("pass", pass);
         HttpEntity entity = new HttpEntity("parameters",headers);
 
-        try {
-            restTemplate.exchange(finalUrl, GET, entity, String.class);
-            return HttpStatus.OK;
-        } catch (HttpClientErrorException ex) {
-            return ex.getStatusCode();
+        try{
+            ResponseEntity responseEntity = restTemplate.exchange(finalUrl, GET, entity, ProfileInfo.class);
+            return (ProfileInfo)responseEntity.getBody();
+        }catch (HttpStatusCodeException ex){
+            String errorMsg;
+            switch (ex.getStatusCode().value()) {
+                case 404:
+                    errorMsg = "Utilisateur inconnu";
+                    break;
+                case 401:
+                    errorMsg = "Mauvais mot de passe";
+                    break;
+                default:
+                    errorMsg = "Erreur inconnu";
+                    break;
+            }
+            throw new Exception(errorMsg);
         }
-    }
-
-    public User getUserInformations(String login) {
-        return restTemplate.getForObject(linkREST + "user/login/" + login, User.class);
-    }
-
-    public void sendNewPassword(String mail) {
-
     }
 
 }

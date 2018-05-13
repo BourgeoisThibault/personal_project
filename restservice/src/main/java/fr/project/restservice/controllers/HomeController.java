@@ -1,8 +1,14 @@
 package fr.project.restservice.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import fr.project.restservice.services.params.ProfileService;
+import fr.project.restservice.services.users.ProfileWorkInfoService;
 import fr.project.utils.entities.others.Sample;
 import fr.project.restservice.services.SampleService;
+import fr.project.utils.entities.params.ProfileType;
+import fr.project.utils.entities.users.ProfileAccount;
+import fr.project.utils.entities.users.ProfileInfo;
+import fr.project.utils.entities.users.ProfileWorkInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -32,12 +38,11 @@ public class HomeController {
     private String dockerImagePrefix;
 
     @Autowired
-    SampleService sampleService;
+    ProfileService profileService;
 
     @GetMapping("/sample")
-    public ResponseEntity<List<Sample>> getAllSample() throws JsonProcessingException {
-        List<Sample> sampleList= sampleService.getAllSample();
-        return new ResponseEntity<List<Sample>>(sampleList, HttpStatus.OK);
+    public ResponseEntity<List<ProfileType>> getAllSample() throws JsonProcessingException {
+        return new ResponseEntity<List<ProfileType>>(profileService.getAllProfileType(), HttpStatus.OK);
     }
 
     @GetMapping("/")

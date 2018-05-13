@@ -1,15 +1,20 @@
 package fr.project.webservice.controllers;
 
 import fr.project.utils.entities.oldentities.User;
+import fr.project.utils.entities.users.ProfileInfo;
 import fr.project.webservice.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -21,7 +26,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
  */
 
 @Controller
-@RequestMapping(value="/login")
+@RequestMapping(value="/sign")
 public class Login {
 
 
@@ -51,17 +56,17 @@ public class Login {
 
     @RequestMapping(value = "/forgot", method = POST)
     public ModelAndView setNewPass(@RequestParam("mail") String mail,
-                                 HttpSession session) {
+                                 HttpSession session) throws UnsupportedEncodingException {
         if (session.getAttribute("isConnect") != null)
             session.removeAttribute("isConnect");
 
         loginService.sendNewPassword(mail);
 
-        return new ModelAndView("redirect:../login/?message=Email envoyé");
+        return new ModelAndView("redirect:../sign/in?message=" + URLEncoder.encode("Email envoyé", "UTF-8"));
 
     }
 
-    @RequestMapping(value = "/", method = GET)
+    @RequestMapping(value = "/in", method = GET)
     public ModelAndView GetLogin(@RequestParam(name = "error",required = false) String error,
                                  @RequestParam(name = "message",required = false) String message,
                                  HttpSession session) {
@@ -78,7 +83,7 @@ public class Login {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/", method = POST)
+    @RequestMapping(value = "/in", method = POST)
     public ModelAndView SetLogin(@RequestParam("login") String login,
                                  @RequestParam("pass") String pass,
                                  HttpSession session) throws InterruptedException {
@@ -88,29 +93,19 @@ public class Login {
             return modelAndView;
         }
 
-        HttpStatus httpStatus = loginService.connectUser(login,pass);
-
-        if(httpStatus.equals(HttpStatus.OK))
-        {
-            User user_ = loginService.getUserInformations(login);
+        try {
+            ProfileInfo profileInfo = loginService.authentificateUser(login,pass);
 
             session.setAttribute("isConnect", true);
-            session.setAttribute("first_name", user_.getFirstName());
-            session.setAttribute("last_name", user_.getLastName());
-            session.setAttribute("pseudo", user_.getPseudo());
+            session.setAttribute("first_name", profileInfo.getFirstName());
+            session.setAttribute("last_name", profileInfo.getLastName());
+            session.setAttribute("pseudo", profileInfo.getProfileAccount().getPseudo());
             session.setAttribute("profile", "To define");
 
             return new ModelAndView("redirect:../");
+        } catch (Exception e) {
+            return new ModelAndView("redirect:../sign/in?error="+e.getMessage());
         }
 
-        session.removeAttribute("isConnect");
-
-        if(httpStatus.equals(HttpStatus.NOT_FOUND))
-            return new ModelAndView("redirect:../login/?error=Utilisateur inconnu");
-
-        if(httpStatus.equals(HttpStatus.UNAUTHORIZED))
-            return new ModelAndView("redirect:../login/?error=Mot de passe incorrect");
-
-        return new ModelAndView("redirect:../login/?error=Erreur inconnu");
     }
 }

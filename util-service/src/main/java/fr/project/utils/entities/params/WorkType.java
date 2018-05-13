@@ -11,13 +11,13 @@ import javax.persistence.Id;
 /**
  * @author BOURGEOIS Thibault
  * Date     12/05/2018
- * Time     01:02
+ * Time     15:56
  */
 
 @Data
 @ToString
 @Entity
-public class ProfileType {
+public class WorkType {
     @Id
     @Column
     private String wording;

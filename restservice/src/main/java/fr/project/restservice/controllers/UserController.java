@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import fr.project.utils.entities.oldentities.User;
 import fr.project.utils.entities.others.Error;
 import fr.project.restservice.services.UserService;
-import methods.Crypt;
+import fr.project.utils.methods.Crypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

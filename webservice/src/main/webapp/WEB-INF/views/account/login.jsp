@@ -12,12 +12,11 @@
 
 <div class="container">
 
-    <form class="login-form" style="margin: 100px auto 0;" action="/login/" method="post">
+    <form class="login-form" style="margin: 100px auto 0;" action="/sign/in" method="post">
         <div class="login-wrap">
             <p class="login-img">
                 <img id="myImg" src="${contextPath}/resources/img/Logo.png" width="150px"/>
             </p>
-
 
             <c:choose>
                 <c:when test="${empty param.error}">
@@ -51,7 +50,7 @@
             </div>
             <label id="myForgot" class="checkbox">
                 <span class="pull-right">
-                    <a href="/login/forgot"> Mot de passe oublié?</a>
+                    <a href="/sign/forgot"> Mot de passe oublié?</a>
                 </span>
             </label>
             <button id="connectButton" class="btn btn-primary btn-lg btn-block" type="submit">Connexion</button>

@@ -1,4 +1,4 @@
-package methods;
+package fr.project.utils.methods;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 

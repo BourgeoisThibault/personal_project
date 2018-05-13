@@ -13,7 +13,6 @@ import javax.persistence.*;
  */
 @Data
 @ToString
-@Builder
 @Entity
 public class Sample {
     @Id
