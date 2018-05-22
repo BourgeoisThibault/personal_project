@@ -27,8 +27,6 @@ public class OfferValidation {
     private ProfileInfo acceptor;
     @OneToOne
     private ChatRoom chatRoom;
-    @Column
-    private Boolean rhValidation;
-    @Column
-    private Boolean managerValidation;
+    @Column(columnDefinition = "INT DEFAULT 0")
+    private int nbValidation;
 }

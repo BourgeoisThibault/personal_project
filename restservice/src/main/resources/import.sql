@@ -36,15 +36,39 @@ INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_word
 INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (3, 'manager', 'root@root.fr', SHA2('root', 512), 'Manager');
 INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (4, 'tibo', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
 INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (5, 'ruben', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (6, 'linda', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (7, 'tony', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (8, 'milo', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (9, 'alex', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (10, 'caro', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (11, 'louise', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
 
 INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (1, '1993-07-06', 'La description', 'AUCUN', 'Admin', 'ISTRATEUR', '2018-05-17 00:27:00', '1');
 INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (2, '1993-07-06', 'La description', 'To define', 'Humaine', 'RESSOURCE', '2018-05-17 00:27:00', '2');
-INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (2, '1993-07-06', 'La description', 'To define', 'Manage', 'MANAGER', '2018-05-17 00:27:00', '3');
-INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (2, '1993-07-06', 'La description', 'To define', 'Thibault', 'BOURGEOIS', '2018-05-17 00:27:00', '4');
-INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (2, '1993-07-06', 'La description', 'To define', 'Ruben', 'EDERY', '2018-05-17 00:27:00', '5');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (3, '1993-07-06', 'La description', 'To define', 'Manage', 'MANAGER', '2018-05-17 00:27:00', '3');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (4, '1993-07-06', 'La description', 'To define', 'Thibault', 'BOURGEOIS', '2018-05-17 00:27:00', '4');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (5, '1993-07-06', 'La description', 'To define', 'Ruben', 'EDERY', '2018-05-17 00:27:00', '5');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (6, '1993-07-06', 'La description', 'To define', 'Linda', 'BOUZID', '2018-05-17 00:27:00', '6');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (7, '1993-07-06', 'La description', 'To define', 'Tony', 'LECOINTRE', '2018-05-17 00:27:00', '7');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (8, '1993-07-06', 'La description', 'To define', 'Marie-Laure', 'KOEGEL', '2018-05-17 00:27:00', '8');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (9, '1993-07-06', 'La description', 'To define', 'Alexandre', 'SAHUT', '2018-05-17 00:27:00', '9');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (10, '1993-07-06', 'La description', 'To define', 'Caroline', 'BOSCHET', '2018-05-17 00:27:00', '10');
+INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (11, '1993-07-06', 'La description', 'To define', 'Louise', 'JUNQUA', '2018-05-17 00:27:00', '11');
 
 INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '4', 'TRAM1', 'Chauffeur', 'Paris');
 INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '5', 'TRAM2', 'Chauffeur', 'Paris');
+INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '6', 'TRAM3', 'Chauffeur', 'Paris');
+INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '7', 'BUS1', 'Chauffeur', 'Paris');
+INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '8', 'BUS2', 'Chauffeur', 'Paris');
+INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '9', 'BUS3', 'Chauffeur', 'Paris');
+INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '10', 'RER1', 'Chauffeur', 'Paris');
+INSERT INTO profile_work_info (hiring_date, work_libelle, profile_info_id, work_entity_wording, work_type_wording, working_location_wording) VALUES ('2018-05-08', 'Chauffeur de bus', '11', 'RER2', 'Chauffeur', 'Paris');
+
+INSERT INTO offer (id, comment, date_begin, date_end, deadline, is_match, location, offer, profile_info_id) VALUES (1, 'un commentaire', '2018-05-24 00:10:00', '2018-05-24 00:17:00', '2018-05-28 00:00:00', '0', 'Paris', 'changement horaire', '4');
+INSERT INTO offer (id, comment, date_begin, date_end, deadline, is_match, location, offer, profile_info_id) VALUES (2, 'un commentaire', '2018-05-25 00:10:00', '2018-05-25 00:17:00', '2018-05-28 00:00:00', '0', 'Paris', 'changement horaire', '5');
+INSERT INTO offer (id, comment, date_begin, date_end, deadline, is_match, location, offer, profile_info_id) VALUES (3, 'un commentaire', '2018-05-24 00:08:00', '2018-05-24 00:13:00', '2018-05-28 00:00:00', '0', 'Paris', 'changement horaire', '6');
+INSERT INTO offer (id, comment, date_begin, date_end, deadline, is_match, location, offer, profile_info_id) VALUES (4, 'un commentaire', '2018-05-25 00:08:00', '2018-05-24 00:13:00', '2018-05-28 00:00:00', '0', 'Paris', 'changement horaire', '7');
+INSERT INTO offer (id, comment, date_begin, date_end, deadline, is_match, location, offer, profile_info_id) VALUES (5, 'un commentaire', '2018-05-25 00:10:00', '2018-05-25 00:17:00', '2018-05-28 00:00:00', '0', 'Paris', 'changement horaire', '4');
 
 INSERT INTO chat_room (id, room_name) VALUES (1, 'firstRoom');
 

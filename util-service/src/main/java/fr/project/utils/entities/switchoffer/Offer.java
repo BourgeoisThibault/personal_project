@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author BOURGEOIS Thibault
@@ -35,6 +36,8 @@ public class Offer {
     private String comment;
     @Column
     private String location;
-    @Column
+    @Column(columnDefinition="BOOLEAN DEFAULT false")
     private Boolean isMatch;
+    @OneToMany
+    private List<ProfileInfo> listOfLike;
 }

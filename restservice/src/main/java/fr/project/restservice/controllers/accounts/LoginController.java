@@ -1,10 +1,12 @@
 package fr.project.restservice.controllers.accounts;
 
 import fr.project.restservice.services.params.ProfileService;
+import fr.project.restservice.services.switchoffer.OfferService;
 import fr.project.restservice.services.users.ProfileAccountService;
 import fr.project.restservice.services.users.ProfileInfoService;
 import fr.project.utils.entities.oldentities.User;
 import fr.project.utils.entities.others.Error;
+import fr.project.utils.entities.switchoffer.Offer;
 import fr.project.utils.entities.users.ProfileAccount;
 import fr.project.utils.entities.users.ProfileInfo;
 import fr.project.utils.entities.users.ProfileWorkInfo;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * @author BOURGEOIS Thibault
@@ -30,6 +33,8 @@ public class LoginController {
     private ProfileAccountService profileAccountService;
     @Autowired
     private ProfileInfoService profileInfoService;
+    @Autowired
+    private OfferService offerService;
 
     @GetMapping(value = "/authentification")
     public ResponseEntity authentificateAccount(
@@ -45,6 +50,7 @@ public class LoginController {
 
             if (profileAccount.getEncryptedPass().equals(Crypt.getHash(pass))){
                 ProfileInfo profileInfo = profileInfoService.getOneInfoByAccount(profileAccount);
+                List<Offer> offerList = offerService.getOfferForUser(profileInfo);
                 return new ResponseEntity(profileInfo,HttpStatus.OK);
             }else{
                 return new ResponseEntity(HttpStatus.UNAUTHORIZED);
