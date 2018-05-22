@@ -98,175 +98,56 @@
                         <!-- Widget content -->
                         <div style="overflow-y:scroll; height:300px;" class="padd sscroll">
 
-                            <ul class="chats">
+                            <c:choose>
+                                <c:when test="${not empty chatroom.chatMessageList.get(1).message}">
 
-                                <!-- Chat by us. Use the class "by-me". -->
-                                <li class="by-me">
-                                    <!-- Use the class "pull-left" in avatar -->
-                                    <div class="avatar pull-left">
-                                        <i class="fa fa-user"></i>
-                                    </div>
+                                    <ul class="chats">
 
-                                    <div class="chat-content">
-                                        <!-- In meta area, first include "name" and then "time" -->
-                                        <div class="chat-meta">John Smith <span class="pull-right">3 hours ago</span></div>
-                                        Vivamus diam elit diam, consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
+                                    <c:forEach items="${ chatroom.chatMessageList }" var="message">
+                                        <c:choose>
+                                            <c:when test="${ message.sender.profileAccount.pseudo == pseudo }">
+                                                <!-- Chat by us. Use the class "by-me". -->
+                                                <li class="by-me">
+                                                    <!-- Use the class "pull-left" in avatar -->
+                                                    <div class="avatar pull-left">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
 
-                                <!-- Chat by other. Use the class "by-other". -->
-                                <li class="by-other">
-                                    <!-- Use the class "pull-right" in avatar -->
-                                    <div class="avatar pull-right">
-                                        <i class="fa fa-user"></i>
-                                    </div>
+                                                    <div class="chat-content">
+                                                        <!-- In meta area, first include "name" and then "time" -->
+                                                        <div class="chat-meta">John Smith <span class="pull-right">3 hours ago</span></div>
+                                                        <c:out value="${ message.message }" />
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </li>
+                                            </c:when>
+                                            <c:when test="${ message.sender.profileAccount.pseudo != pseudo  }">
+                                                <!-- Chat by other. Use the class "by-other". -->
+                                                <li class="by-other">
+                                                    <!-- Use the class "pull-right" in avatar -->
+                                                    <div class="avatar pull-right">
+                                                        <i class="fa fa-user"></i>
+                                                    </div>
 
-                                    <div class="chat-content">
-                                        <!-- In the chat meta, first include "time" then "name" -->
-                                        <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
-                                        Vivamus diam elit diam, consectetur fconsectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
+                                                    <div class="chat-content">
+                                                        <!-- In the chat meta, first include "time" then "name" -->
+                                                        <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
+                                                        <c:out value="${ message.message }" />
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </li>
+                                            </c:when>
+                                        </c:choose>
+                                    </c:forEach>
 
-                                <li class="by-me">
-                                    <div class="avatar pull-left">
-                                        <i class="fa fa-user"></i>
-                                    </div>
+                                    </ul>
 
-                                    <div class="chat-content">
-                                        <div class="chat-meta">John Smith <span class="pull-right">4 hours ago</span></div>
-                                        Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
+                                </c:when>
 
-                                <li class="by-other">
-                                    <!-- Use the class "pull-right" in avatar -->
-                                    <div class="avatar pull-right">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <!-- In the chat meta, first include "time" then "name" -->
-                                        <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
-                                        Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-                                <!-- Chat by us. Use the class "by-me". -->
-                                <li class="by-me">
-                                    <!-- Use the class "pull-left" in avatar -->
-                                    <div class="avatar pull-left">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <!-- In meta area, first include "name" and then "time" -->
-                                        <div class="chat-meta">John Smith <span class="pull-right">3 hours ago</span></div>
-                                        Vivamus diam elit diam, consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-
-                                <!-- Chat by other. Use the class "by-other". -->
-                                <li class="by-other">
-                                    <!-- Use the class "pull-right" in avatar -->
-                                    <div class="avatar pull-right">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <!-- In the chat meta, first include "time" then "name" -->
-                                        <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
-                                        Vivamus diam elit diam, consectetur fconsectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-
-                                <li class="by-me">
-                                    <div class="avatar pull-left">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <div class="chat-meta">John Smith <span class="pull-right">4 hours ago</span></div>
-                                        Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-
-                                <li class="by-other">
-                                    <!-- Use the class "pull-right" in avatar -->
-                                    <div class="avatar pull-right">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <!-- In the chat meta, first include "time" then "name" -->
-                                        <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
-                                        Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-                                <!-- Chat by us. Use the class "by-me". -->
-                                <li class="by-me">
-                                    <!-- Use the class "pull-left" in avatar -->
-                                    <div class="avatar pull-left">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <!-- In meta area, first include "name" and then "time" -->
-                                        <div class="chat-meta">John Smith <span class="pull-right">3 hours ago</span></div>
-                                        Vivamus diam elit diam, consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-
-                                <!-- Chat by other. Use the class "by-other". -->
-                                <li class="by-other">
-                                    <!-- Use the class "pull-right" in avatar -->
-                                    <div class="avatar pull-right">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <!-- In the chat meta, first include "time" then "name" -->
-                                        <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
-                                        Vivamus diam elit diam, consectetur fconsectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-
-                                <li class="by-me">
-                                    <div class="avatar pull-left">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <div class="chat-meta">John Smith <span class="pull-right">4 hours ago</span></div>
-                                        Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-
-                                <li class="by-other">
-                                    <!-- Use the class "pull-right" in avatar -->
-                                    <div class="avatar pull-right">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-
-                                    <div class="chat-content">
-                                        <!-- In the chat meta, first include "time" then "name" -->
-                                        <div class="chat-meta">3 hours ago <span class="pull-right">Jenifer Smith</span></div>
-                                        Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus consectetur dapibus adipiscing elit.
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </li>
-
-                            </ul>
+                                <c:when test="${empty chatroom.chatMessageList}">
+                                    Aucun message...
+                                </c:when>
+                            </c:choose>
 
                         </div>
                         <!-- Widget footer -->
@@ -302,6 +183,7 @@
 
                 </div>
             </div>
+
         </div>
 
 

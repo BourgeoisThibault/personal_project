@@ -1,6 +1,8 @@
 package fr.project.webservice.controllers;
 
+import fr.project.utils.entities.module.ChatRoom;
 import fr.project.webservice.service.LoginService;
+import fr.project.webservice.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,18 +24,27 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class Home {
 
+    @Autowired
+    private MessageService messageService;
+
     @RequestMapping(value = "/", method = GET)
-    public ModelAndView GetHome(HttpSession session) {
+    public ModelAndView GetHome(HttpSession session) throws Exception {
         if(session.getAttribute("isConnect")==null)
         {
             ModelAndView modelAndView = new ModelAndView("redirect:/sign/in");
             return modelAndView;
         }
 
+        ChatRoom chatRoom = messageService.getChatRoom();
+
         ModelAndView modelAndView = new ModelAndView("home/index");
+
+        modelAndView.addObject("chatroom", chatRoom);
+
         modelAndView.addObject("session_first_name", session.getAttribute("first_name"));
         modelAndView.addObject("session_last_name", session.getAttribute("last_name"));
         modelAndView.addObject("session_profile", session.getAttribute("profile"));
+
         return modelAndView;
     }
 
