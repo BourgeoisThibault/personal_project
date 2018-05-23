@@ -62,4 +62,18 @@ public class LoginController {
 
     }
 
+    @RequestMapping(path = "/signin", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
+    public ResponseEntity createNewUser(@RequestBody ProfileAccount profileAccount) {
+        ProfileAccount profileAccount1 = profileAccountService.getOneAccountByPseudo(profileAccount.getPseudo());
+        ProfileAccount profileAccount2 = profileAccountService.getOneAccountByMail(profileAccount.getMail());
+        if ((profileAccount1 == null) && (profileAccount2 == null)) {
+            profileAccount.setEncryptedPass(Crypt.getHash(profileAccount.getEncryptedPass()));
+            profileAccount = profileAccountService.createNewAccount(profileAccount);
+            return new ResponseEntity(profileAccount, HttpStatus.OK);
+        } else {
+            Error error = new Error("409","Account already exist");
+            return new ResponseEntity(error, HttpStatus.CONFLICT);
+        }
+    }
+
 }

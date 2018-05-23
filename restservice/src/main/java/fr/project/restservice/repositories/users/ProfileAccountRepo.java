@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ProfileAccountRepo extends CrudRepository<ProfileAccount, Long> {
     ProfileAccount findByPseudo(String pseudo);
+    ProfileAccount findByMail(String mail);
 }

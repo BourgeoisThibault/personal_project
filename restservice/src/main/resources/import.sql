@@ -32,16 +32,16 @@ INSERT INTO work_type (wording) VALUES ('Chargé d''affaire');
 
 ### SET VALUE USERS ###
 INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (1, 'root', 'root@root.fr', SHA2('root', 512), 'Administrateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (2, 'rh', 'root@root.fr', SHA2('root', 512), 'Rh');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (3, 'manager', 'root@root.fr', SHA2('root', 512), 'Manager');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (4, 'tibo', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (5, 'ruben', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (6, 'linda', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (7, 'tony', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (8, 'milo', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (9, 'alex', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (10, 'caro', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
-INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (11, 'louise', 'root@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (2, 'rh', 'rh@root.fr', SHA2('root', 512), 'Rh');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (3, 'manager', 'manager@root.fr', SHA2('root', 512), 'Manager');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (4, 'tibo', 'tibo@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (5, 'ruben', 'ruben@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (6, 'linda', 'linda@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (7, 'tony', 'tony@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (8, 'milo', 'milo@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (9, 'alex', 'alex@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (10, 'caro', 'caro@root.fr', SHA2('root', 512), 'Utilisateur');
+INSERT INTO profile_account (id, pseudo, mail, encrypted_Pass, profile_type_wording) VALUES (11, 'louise', 'louise@root.fr', SHA2('root', 512), 'Utilisateur');
 
 INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (1, '1993-07-06', 'La description', 'AUCUN', 'Admin', 'ISTRATEUR', '2018-05-17 00:27:00', '1');
 INSERT INTO profile_info (id, birthday, description, dream_jobs, first_name, last_name, registration, profile_account_id) VALUES (2, '1993-07-06', 'La description', 'To define', 'Humaine', 'RESSOURCE', '2018-05-17 00:27:00', '2');

@@ -18,4 +18,12 @@ public class ProfileAccountService {
     public ProfileAccount getOneAccountByPseudo(String pseudo) {
         return profileAccountRepo.findByPseudo(pseudo);
     }
+
+    public ProfileAccount getOneAccountByMail(String mail){
+        return profileAccountRepo.findByMail(mail);
+    }
+
+    public ProfileAccount createNewAccount(ProfileAccount profileAccount){
+        return profileAccountRepo.save(profileAccount);
+    }
 }
