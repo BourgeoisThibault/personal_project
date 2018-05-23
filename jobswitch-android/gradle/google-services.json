@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1028289761834",
+    "firebase_url": "https://jobswitch-460d9.firebaseio.com",
+    "project_id": "jobswitch-460d9",
+    "storage_bucket": "jobswitch-460d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028289761834:android:4c563737f247c3ec",
+        "android_client_info": {
+          "package_name": "dependency.greendao.test.tinder.directional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028289761834-dqmmgmoe6d283nj27vjkvf07m71jrjqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxiq8By9Z6UCaVjP2jcHNq1TqCo6vkRk8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
