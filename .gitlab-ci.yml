@@ -26,6 +26,34 @@ packaging:
     - mvn package -DskipTests
   when: on_success
 
+packageAndroid:
+  stage: package
+  image: marcolizza/docker-android-sdk:latest
+  script:
+    - cd jobswitch-android/
+    - chmod +x ./gradlew
+    - ./gradlew assemble
+  artifacts:
+      paths:
+      - app/build/outputs/apk/app-debug.apk
+  when: on_success
+
+deploy_apk:
+  stage: deploy
+  dependencies:
+    - packageAndroid
+  script:
+    - mkdir ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
+    - echo "$SSH_HOST_KEYS" > ~/.ssh/known_hosts
+    - scp jobswitch-android/app/build/outputs/apk/app-debug.apk jobswitch@$IP_DOCKER:/var/www/html/app.apk
+  when: on_success
+  only:
+    refs:
+      - master
+
 deploy_image:
   stage: deploy
   script:
