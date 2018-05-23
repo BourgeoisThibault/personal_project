@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">JobSwitch</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_activity">This is our Main Activity</string>
+    <string name="another_activity">This is our Another Activity</string>
+
+
+    <string name="title_activity_another">AnotherActivity</string>
+    <string name="title_activity_got_notification">GotNotificationActivity</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_test_spinner">TestSpinnerActivity</string>
+    <string name="title_activity_splash_screen">JobSwitch</string>
+</resources>
