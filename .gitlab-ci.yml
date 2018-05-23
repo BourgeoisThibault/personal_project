@@ -33,9 +33,10 @@ packageAndroid:
     - cd jobswitch-android/
     - chmod +x ./gradlew
     - ./gradlew assemble
+    - cd ..
   artifacts:
       paths:
-      - app/build/outputs/apk/app-debug.apk
+      - jobswitch-android/app/build/outputs/apk/app-debug.apk
   when: on_success
 
 deploy_apk:
