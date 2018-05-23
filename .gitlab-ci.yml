@@ -35,6 +35,7 @@ packageAndroid:
     - ./gradlew assemble
     - cd ..
   artifacts:
+      expire_in: 2 hrs
       paths:
       - jobswitch-android/app/build/outputs/apk/app-debug.apk
   when: on_success
