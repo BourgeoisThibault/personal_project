@@ -50,7 +50,7 @@ public class LoginController {
 
             if (profileAccount.getEncryptedPass().equals(Crypt.getHash(pass))){
                 ProfileInfo profileInfo = profileInfoService.getOneInfoByAccount(profileAccount);
-                List<Offer> offerList = offerService.getOfferForUser(profileInfo);
+                //List<Offer> offerList = offerService.getOfferForUser(profileInfo);
                 return new ResponseEntity(profileInfo,HttpStatus.OK);
             }else{
                 return new ResponseEntity(HttpStatus.UNAUTHORIZED);
