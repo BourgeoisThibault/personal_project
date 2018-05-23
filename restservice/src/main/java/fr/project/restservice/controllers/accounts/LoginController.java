@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,13 +64,19 @@ public class LoginController {
     }
 
     @RequestMapping(path = "/signin", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON, consumes = MediaType.APPLICATION_JSON)
-    public ResponseEntity createNewUser(@RequestBody ProfileAccount profileAccount) {
-        ProfileAccount profileAccount1 = profileAccountService.getOneAccountByPseudo(profileAccount.getPseudo());
-        ProfileAccount profileAccount2 = profileAccountService.getOneAccountByMail(profileAccount.getMail());
+    public ResponseEntity createNewUser(@RequestBody ProfileInfo profileInfo) {
+
+        ProfileAccount profileAccount1 = profileAccountService.getOneAccountByPseudo(profileInfo.getProfileAccount().getPseudo());
+        ProfileAccount profileAccount2 = profileAccountService.getOneAccountByMail(profileInfo.getProfileAccount().getMail());
         if ((profileAccount1 == null) && (profileAccount2 == null)) {
-            profileAccount.setEncryptedPass(Crypt.getHash(profileAccount.getEncryptedPass()));
-            profileAccount = profileAccountService.createNewAccount(profileAccount);
-            return new ResponseEntity(profileAccount, HttpStatus.OK);
+            profileInfo.getProfileAccount().setEncryptedPass(Crypt.getHash(profileInfo.getProfileAccount().getEncryptedPass()));
+            profileInfo.setProfileAccount(profileAccountService.createNewAccount(profileInfo.getProfileAccount()));
+
+            profileInfo.setRegistration(new Date());
+
+            profileInfoService.createNewProfile(profileInfo);
+
+            return new ResponseEntity(profileInfo, HttpStatus.OK);
         } else {
             Error error = new Error("409","Account already exist");
             return new ResponseEntity(error, HttpStatus.CONFLICT);

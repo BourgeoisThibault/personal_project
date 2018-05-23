@@ -19,4 +19,8 @@ public class ProfileInfoService {
     public ProfileInfo getOneInfoByAccount(ProfileAccount profileAccount) {
         return profileInfoRepo.getByProfileAccount(profileAccount);
     }
+
+    public ProfileInfo createNewProfile(ProfileInfo profileInfo) {
+        return profileInfoRepo.save(profileInfo);
+    }
 }
