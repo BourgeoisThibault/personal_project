@@ -54,6 +54,15 @@
                 </span>
             </label>
             <button id="connectButton" class="btn btn-primary btn-lg btn-block" type="submit">Connexion</button>
+
+        <br>
+
+            <div id="downloadApk" style="text-align: center" class="input-group">
+                <a class="" href="http://file.jobswitch.inside.esiag.info/app.apk">
+                    <img width="80%" src="${contextPath}/resources/img/logo_apk.png">
+                </a>
+            </div>
+
             <!--<button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>-->
         </div>
     </form>
