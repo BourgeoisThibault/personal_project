@@ -39,6 +39,9 @@ packageAndroid:
       paths:
       - jobswitch-android/app/build/outputs/apk/app-debug.apk
   when: on_success
+  only:
+    refs:
+      - master
 
 deploy_apk:
   stage: deploy
